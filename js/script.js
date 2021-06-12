@@ -18,6 +18,10 @@ function dayOfWeek(){
     if(mm <= 0 || mm > 12) alert("You have entered an invalid month");
 
     var day =  ( ( (cc/4) -2*cc-1) + ((5*yy/4) ) + ((26*(mm+1)/10)) + dd ) % 7;
+
+    return day;
 }
+
+
 
  
