@@ -5,6 +5,14 @@ var dateOfBirth = document.getElementById("dob").value;
 var isFemale = document.getElementById("gridRadios1").value;
 var isMale = document.getElementById("gridRadios2").value;
 
+var birthday = dateOfBirth.split('/');
+
+var dd = birthday[0]; //day
+var mm = birthday[1]; //month
+var year = birthday[2];
+var cc = year.slice(0,2); // century digit
+var yy = year.slice(2,4); // year digit
+
 
 
  
