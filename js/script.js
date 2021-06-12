@@ -22,6 +22,22 @@ function dayOfWeek(){
     return day;
 }
 
+function displayDetails(){
+    var d = dayOfWeek();
+    var n = female.length();
 
+    for(var i=0;i<n;i++){
+        var femaleName = female[i].name;
+        var maleName = male[i].name;
+
+        if(i === d && isFemale){
+            document.querySelector("#akanName").innerHTML = femaleName + " !";
+        }
+
+        if(i === d && isMale == "Male"){
+            document.querySelector("#akanName").innerHTML = maleName + " !";
+        }
+    }
+}
 
  
