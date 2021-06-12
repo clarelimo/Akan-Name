@@ -7,3 +7,11 @@ body{
     background-size: cover;
     background-position: center;
 }
+#btn{
+    background-color: #338C9D;
+    border: none;
+}
+.form-check-input:checked{
+    background-color: #338C9D;
+    border: none;
+}
