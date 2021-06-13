@@ -2,44 +2,39 @@ var male = [{day:"Sunday",name:"Kwasi"},{day:"Monday",name:"Kwadwo"},{day:"Tuesd
 var female = [{day:"Sunday",name:"Akosua"},{day:"Monday",name:"Adwoa"},{day:"Tuesday",name:"Abenaa"},{day:"Wednesday",name:"Akua"},{day:"Thursday",name:"Yaa"},{day:"Friday",name:"Afua"},{day:"Saturday",name:"Ama"}];
 
 function dayOfWeek(){
-    var dateOfBirth = document.getElementById("dateOfBirthInput").value;
-    var birthday = dateOfBirth.split('-');
+    var dd = document.getElementById("date").value;
+    var mm = document.getElementById("month").value;
+    var year = document.getElementById("year").value;
 
-    var mm = parseInt(birthday[1]); //month
-    var dd = parseInt(birthday[2]); //day
-    var year = birthday[0];
+    var cc = year.slice(0,2); // century digit
+    var yy = year.slice(2,4); // year digit
 
-    var cc = parseInt(year.slice(0,2)); // century digit
-    var yy = parseInt(year.slice(2,4)); // year digit
     if(dd <= 0 || dd > 31) alert("You have entered an invalid day");
     if(mm <= 0 || mm > 12) alert("You have entered an invalid month");
 
-    var day =  ( ( (cc/4) -2*cc-1) + ((5*yy/4) ) + ((26*(mm+1)/10)) + dd ) % 7;
+    var day =  ( ( (cc/4) -2*cc-1) + ((5*yy/4) ) + ((26*(mm+1)/10)) + dd ) % 7;;
 
-    return Math.round(day);
+    return Math.floor(day);
 }
 
 function displayDetails(){
-    var isFemale = document.getElementById("gridRadios1").value;
-    var isMale = document.getElementById("gridRadios2").value;
-
+    var gender = document.querySelector('input[name="gridRadios"]:checked').value;
+    
     var d = dayOfWeek();
 
-    var n = female.length;
+    var femaleName = female[d].name;
+    var maleName = male[d].name;
+    var dayName = male[d].day;
 
-    for(var i=0;i<n;i++){
-        var femaleName = female[i].name;
-        var maleName = male[i].name;
-        console.log(female[i].day +" "+ femaleName +" "+ maleName)
-        if(i === d && isFemale === "Female"){
-            document.querySelector("#akanName").innerHTML = femaleName + " !";
-        }
-
-        if(i === d && isMale === "Male"){
-            document.querySelector("#akanName").innerHTML = maleName + " !";
-        }
+    if(gender === "Female"){
+        document.querySelector("#akanName").innerHTML = "Your Akan Name is : " + femaleName;
+        document.querySelector("#day").innerHTML = "You were born on a : " + dayName;
+    }else if(gender === "Male"){
+        document.querySelector("#akanName").innerHTML = "Your Akan Name is : " + maleName;
+        document.querySelector("#day").innerHTML = "You were born on a : " + dayName;
+    }else{
+        alert("Invalid Inputs");
     }
+
+    document.getElementById("frm").reset();
 }
-
-
- 
