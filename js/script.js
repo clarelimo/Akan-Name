@@ -11,15 +11,20 @@ function dayOfWeek(){
 
     if(dd <= 0 || dd > 31) alert("You have entered an invalid day");
     if(mm <= 0 || mm > 12) alert("You have entered an invalid month");
-
+   
     var day =  ( ( (cc/4) -2*cc-1) + ((5*yy/4) ) + ((26*(mm+1)/10)) + dd ) % 7;;
 
     return Math.floor(day);
 }
 
 function displayDetails(){
-    var gender = document.querySelector('input[name="gridRadios"]:checked').value;
-    
+    var gender = document.querySelector('input[name="gridRadios"]:checked');
+    if(gender === null){
+        alert("Please choose your gender");
+    }else{
+        gender = gender.value;
+    }
+
     var d = dayOfWeek();
 
     var femaleName = female[d].name;
